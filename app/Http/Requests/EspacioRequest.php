@@ -25,7 +25,8 @@ class EspacioRequest extends FormRequest
         return [
             'nombre.required' => 'El nombre del espacio es obligatorio',
             'tipo.required' => 'Debes seleccionar el tipo de espacio',
-            'descripcion.required' => 'Debes escribir una descripcion corta de tu espacio',
+            'descripcion.required' => 'Debes escribir una descripción corta de tu espacio',
+            'descripcion.max' => 'La descripción no puede superar los 250 caracteres',
             'moneda.required' => 'Debes seleccionar la moneda que usaras para el espacio'
         ];
     }
@@ -35,7 +36,7 @@ class EspacioRequest extends FormRequest
         return [
             'nombre' => ['required'],
             'tipo' => ['required', new Enum(TipoEspacios::class)],
-            'descripcion' => ['required'],
+            'descripcion' => ['required', 'string', 'max:250'],
             'moneda' => ['required', Rule::in(['mxn', 'usd', 'euro'])]
         ];
     }

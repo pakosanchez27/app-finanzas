@@ -21,6 +21,7 @@ class EspacioFinancieroController extends Controller
 
         $espacio  = EspacioFinanciero::where('user_id', $id_user)->get();
 
+
         return view('dashboard', [
             'tiposEspacios' => TipoEspacios::cases(),
             'espacios' => $espacio,
