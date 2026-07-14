@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EspacioRequest;
-use App\TipoEspacios;
 use App\Models\EspacioFinanciero;
-use Illuminate\Http\Request;
+use App\TipoEspacios;
 use Illuminate\Support\Facades\Auth;
 
 class EspacioFinancieroController extends Controller
@@ -18,9 +17,7 @@ class EspacioFinancieroController extends Controller
 
         $id_user = Auth::user()->id;
 
-
-        $espacio  = EspacioFinanciero::where('user_id', $id_user)->get();
-
+        $espacio = EspacioFinanciero::where('user_id', $id_user)->get();
 
         return view('dashboard', [
             'tiposEspacios' => TipoEspacios::cases(),
@@ -31,10 +28,7 @@ class EspacioFinancieroController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(EspacioRequest $request)
-    {
-
-    }
+    public function create(EspacioRequest $request) {}
 
     /**
      * Store a newly created resource in storage.
@@ -54,14 +48,13 @@ class EspacioFinancieroController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(EspacioFinanciero $espacioFinanciero)
+    public function show(EspacioFinanciero $espacio)
     {
-        abort_unless($espacioFinanciero->user_id === Auth::id(), 403);
+        abort_unless($espacio->user_id === Auth::id(), 403);
 
-
-
-        return view('espacios.show', [
-            'espacioFinanciero' => $espacioFinanciero,
+        return view('espacios.index', [
+            'espacioActual' => $espacio,
+            'espacios' => EspacioFinanciero::where('user_id', Auth::id())->get(),
         ]);
     }
 

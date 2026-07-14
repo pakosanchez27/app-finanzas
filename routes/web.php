@@ -15,10 +15,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/espacios-financieros', [EspacioFinancieroController::class, 'store'])
         ->name('dashboard.espacios-financieros.store');
 
+    Route::patch('/espacios-financieros/{espacioFinanciero}', [EspacioFinancieroController::class, 'update'])
+        ->name('dashboard.espacios-financieros.update');
+
+    Route::get('/espacios-financieros/{espacio}', [EspacioFinancieroController::class, 'show'])->name('espacio.show');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
 
 require __DIR__.'/auth.php';

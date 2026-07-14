@@ -94,6 +94,14 @@
 
         </main>
     </div>
+
+    @if (session('toast_success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                window.showSuccessToast(@json(session('toast_success')));
+            });
+        </script>
+    @endif
 </body>
 
 </html>

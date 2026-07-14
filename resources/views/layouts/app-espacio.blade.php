@@ -19,10 +19,14 @@
                             </span>
 
                             <select id="financialSpace" name="espacio_financiero"
+                                onchange="if (this.value) window.location.href = this.value"
                                 aria-label="Seleccionar espacio financiero"
                                 class="h-12 w-full cursor-pointer appearance-none rounded-xl border-0 bg-violet-50 py-0 pl-12 pr-10 text-sm font-semibold text-slate-700 outline-none ring-1 ring-inset ring-violet-100 transition hover:bg-violet-100 focus:ring-2 focus:ring-violet-400">
                                 @forelse ($espacios as $espacio)
-                                    <option value="{{ $espacio->id }}">{{ $espacio->nombre }}</option>
+                                    <option value="{{ route('espacio.show', $espacio) }}"
+                                        @selected($espacio->is($espacioActual))>
+                                        {{ $espacio->nombre }}
+                                    </option>
                                 @empty
                                     <option value="">Sin espacios financieros</option>
                                 @endforelse
