@@ -16,9 +16,9 @@
 </head>
 
 <body class="bg-gray-200 h-dvh overflow-hidden">
-    <header class="w-full h-20 bg-white shadow px-20 flex justify-between items-center">
+    <header class="w-full h-20 bg-white shadow px-5 flex justify-between items-center">
         <div id="logo">
-            <img src="{{ asset('src/img/logo.png') }}" alt="Logo de Aniafi" class="h-16 object-cover">
+            <img src="{{ asset('src/img/logo.png') }}" alt="Logo de Aniafi" class="h-14 object-cover">
         </div>
         <div id="control" class="flex items-center gap-6">
             <button class="text-gray-500 hover:text-indigo-700">

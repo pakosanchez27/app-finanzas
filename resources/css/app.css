@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active {
+    background-color: #f5f3ff;
+    color: #6d28d9;
+    font-weight: 600;
+    box-shadow: inset 3px 0 0 #7c3aed;
+}
+
+.active:hover {
+    background-color: #ede9fe;
+    color: #5b21b6;
+}
+
+.active svg {
+    color: #7c3aed;
+}

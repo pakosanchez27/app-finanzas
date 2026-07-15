@@ -45,9 +45,10 @@ class EspacioFinanciero extends Model
 
         while (static::withTrashed()
             ->where('slug', $slug)
-            ->when($ignoreId, fn ($query) => $query->whereKeyNot($ignoreId))
-            ->exists()) {
-            $slug = $baseSlug.'-'.$suffix++;
+            ->when($ignoreId, fn($query) => $query->whereKeyNot($ignoreId))
+            ->exists()
+        ) {
+            $slug = $baseSlug . '-' . $suffix++;
         }
 
         return $slug;
@@ -56,5 +57,21 @@ class EspacioFinanciero extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+
+    public function presupuestos()
+    {
+        return $this->hasMany(Presupuesto::class);
+    }
+
+    public function periodosPresupuesto()
+    {
+        return $this->hasMany(PeriodoPresupuesto::class);
+    }
+
+    public function categoriasGasto()
+    {
+        return $this->hasMany(CategoriaGasto::class);
     }
 }
